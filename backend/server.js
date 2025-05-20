@@ -1,18 +1,27 @@
 const dotenv = require('dotenv');
 
 // Load environment variables first
-const dotenvResult = dotenv.config();
-if (dotenvResult.error) {
-  console.error('Error loading .env file:', dotenvResult.error);
-  process.exit(1);
+// const dotenvResult = dotenv.config();
+// if (dotenvResult.error) {
+//   console.error('Error loading .env file:', dotenvResult.error);
+//   process.exit(1);
+// }
+
+if (process.env.NODE_ENV !== 'production') {
+  const dotenvResult = require('dotenv').config();
+  if (dotenvResult.error) {
+    console.error('Error loading .env file:', dotenvResult.error);
+    process.exit(1);
+  }
 }
 
+
 // Log environment variables for debugging
-console.log('Cloudinary Config:', {
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET ? '[REDACTED]' : undefined,
-});
+// console.log('Cloudinary Config:', {
+//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//   api_key: process.env.CLOUDINARY_API_KEY,
+//   api_secret: process.env.CLOUDINARY_API_SECRET ? '[REDACTED]' : undefined,
+// });
 
 const express = require('express');
 const connectDB = require('./config/db');
