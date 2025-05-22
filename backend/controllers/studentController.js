@@ -75,7 +75,6 @@ const sendConfirmationEmail = async (student) => {
       <h2>Book Issue Confirmed</h2>
       <p>Dear ${student.fullName},</p>
       <p>Your request for ${student.booksRequested} book(s) has been approved.</p>
-      <p>Please fill out the optional feedback form: <a href="http://your-frontend-url/feedback/${student._id}">Feedback Form</a></p>
       <p>Thank you!</p>
     `,
   };
